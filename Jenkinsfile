@@ -53,8 +53,8 @@ pipeline {
             steps { 
                 script {
                     echo "Deploying application using Docker..."
-                    bat 'docker stop flask-container || exit 0'  
-                    bat 'docker rm flask-container || exit 0'   
+                    bat 'docker stop flask-container || echo Container not running'  
+                    bat 'docker rm flask-container || echo Container not found'   
                     bat 'docker run -d -p 5000:5000 --name flask-container %DOCKER_IMAGE%'  
                     echo "Application is accessible at http://localhost:5000"
                 }
